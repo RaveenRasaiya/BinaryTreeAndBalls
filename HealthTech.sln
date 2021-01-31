@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTech.App", "HealthTech.App\HealthTech.App.csproj", "{41C5D5AB-7B7B-456E-8F84-1DCC71DB8382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthApp.Test", "HealthApp.Test\HealthApp.Test.csproj", "{96FEB606-4828-4F8E-8C5D-BEFB79DFDC26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41C5D5AB-7B7B-456E-8F84-1DCC71DB8382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C5D5AB-7B7B-456E-8F84-1DCC71DB8382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C5D5AB-7B7B-456E-8F84-1DCC71DB8382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C5D5AB-7B7B-456E-8F84-1DCC71DB8382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96FEB606-4828-4F8E-8C5D-BEFB79DFDC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96FEB606-4828-4F8E-8C5D-BEFB79DFDC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96FEB606-4828-4F8E-8C5D-BEFB79DFDC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96FEB606-4828-4F8E-8C5D-BEFB79DFDC26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB5F9FC0-F229-4CBF-B30D-506EF37ACD33}
+	EndGlobalSection
+EndGlobal
