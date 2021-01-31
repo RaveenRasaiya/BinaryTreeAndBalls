@@ -39,7 +39,7 @@ namespace HealthTech.App
 
                 processBinaryTree.FindEmptyContainerId(parentNode);
 
-                Console.WriteLine($"5->Search is completed.");
+                Console.WriteLine($"5->Process is completed.");
 
                 Console.Read();
             }
