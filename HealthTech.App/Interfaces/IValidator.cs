@@ -1,7 +1,9 @@
-﻿namespace HealthTech.App.Interfaces
+﻿using HealthTech.App.Models;
+
+namespace HealthTech.App.Interfaces
 {
     public interface IValidator
     {
-        bool IsValid(string treeDepth);
+        UserInputInfo IsValid(string treeDepth,string predicatedContainerIndex);
     }
 }

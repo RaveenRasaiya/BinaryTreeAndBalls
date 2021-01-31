@@ -1,4 +1,5 @@
 ﻿using HealthTech.App.Interfaces;
+using HealthTech.App.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,6 +9,7 @@ namespace HealthTech.App
     class Program
     {
         private static string treeDepth;
+        private static string predicatedContainerIndex;
         static void Main(string[] args)
         {
             try
@@ -19,18 +21,18 @@ namespace HealthTech.App
                 GetUseInput();
 
                 var validator = serviceProvider.GetService<IValidator>();
-                while (!validator.IsValid(treeDepth))
+                UserInputInfo userInput;
+                while ((userInput = validator.IsValid(treeDepth, predicatedContainerIndex)) == null)
                 {
                     GetUseInput();
                 }
-
-                int.TryParse(treeDepth, out int _treeDepth);
-                int _numberOfBalls = ((int)Math.Pow(2, _treeDepth)) - 1;
+                                
+                int _numberOfBalls = ((int)Math.Pow(2, userInput.Depth)) - 1;                
 
                 Console.WriteLine("2->Application is creating a binary tree...");
 
                 var processBinaryTree = serviceProvider.GetService<IProcessBinaryTree>();
-                var parentNode = processBinaryTree.BuildTree(_treeDepth);
+                var parentNode = processBinaryTree.BuildTree(userInput.Depth);
 
                 Console.WriteLine("3->Application passing balls...");
                 var result = processBinaryTree.RunBalls(_numberOfBalls, parentNode);
@@ -51,8 +53,12 @@ namespace HealthTech.App
 
         private static void GetUseInput()
         {
-            Console.Write("1-> Please enter tree depth :");
+            Console.Write("1-> Please enter tree depth(level):");
             treeDepth = Console.ReadLine();
+
+            Console.Write("1-> Please enter Predicated Container Index :");
+            predicatedContainerIndex = Console.ReadLine();
+
         }
 
         private static ServiceProvider InitDepencyInjection()
