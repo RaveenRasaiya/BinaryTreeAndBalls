@@ -7,7 +7,7 @@ Step 2: Please build the solution to restore all nuget packages for .NET 5
 
 Step 3: Press Ctrl+f5
 
-Step 4: Please input a number to build binary tree and complete process.
+Step 4: Please input a level and predicated container index to build binary tree and wait to complete process.
 
 Step 5: Console shows progress of the application.
 
