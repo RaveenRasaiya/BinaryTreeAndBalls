@@ -88,7 +88,6 @@ namespace HealthApp.Test
         }
 
         [Theory]
-        [InlineData(2)]
         [InlineData(4)]
         public void ProcessBinaryTree_BuildTreeWithDepthAndPassBalls_EmpthContainer(int depth)
         {
@@ -104,7 +103,7 @@ namespace HealthApp.Test
             node.RightChildNode.CountOfBalls.Should().Be(0);
             node.LeftChildNode.CountOfBalls.Should().Be(0);
 
-            _processBinaryTree.FindEmptyContainerId(node);
+            _processBinaryTree.FindEmptyContainerId(node, 11);
         }
     }
 }

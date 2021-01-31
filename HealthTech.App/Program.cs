@@ -26,8 +26,8 @@ namespace HealthTech.App
                 {
                     GetUseInput();
                 }
-                                
-                int _numberOfBalls = ((int)Math.Pow(2, userInput.Depth)) - 1;                
+
+                int _numberOfBalls = ((int)Math.Pow(2, userInput.Depth)) - 1;
 
                 Console.WriteLine("2->Application is creating a binary tree...");
 
@@ -39,7 +39,7 @@ namespace HealthTech.App
 
                 Console.WriteLine("4->Searching for empty container...");
 
-                processBinaryTree.FindEmptyContainerId(parentNode);
+                processBinaryTree.FindEmptyContainerId(parentNode, userInput.PredicatedContainerIndex);
 
                 Console.WriteLine($"5->Process is completed.");
 
