@@ -7,39 +7,46 @@ namespace HealthTech.App
 {
     class Program
     {
-        private static string treeDepth;        
+        private static string treeDepth;
         static void Main(string[] args)
         {
-            Console.WriteLine("Balls and Containers Application....");
-
-            ServiceProvider serviceProvider = InitDepencyInjection();
-
-            GetUseInput();
-
-            var validator = serviceProvider.GetService<IValidator>();
-            while (!validator.IsValid(treeDepth))
+            try
             {
+                Console.WriteLine("Balls and Containers Application....");
+
+                ServiceProvider serviceProvider = InitDepencyInjection();
+
                 GetUseInput();
+
+                var validator = serviceProvider.GetService<IValidator>();
+                while (!validator.IsValid(treeDepth))
+                {
+                    GetUseInput();
+                }
+
+                int.TryParse(treeDepth, out int _treeDepth);
+                int _numberOfBalls = ((int)Math.Pow(2, _treeDepth)) - 1;
+
+                Console.WriteLine("2->Application is creating a binary tree...");
+
+                var processBinaryTree = serviceProvider.GetService<IProcessBinaryTree>();
+                var parentNode = processBinaryTree.BuildTree(_treeDepth);
+
+                Console.WriteLine("3->Application passing balls...");
+                var result = processBinaryTree.RunBalls(_numberOfBalls, parentNode);
+
+                Console.WriteLine("4->Searching for empty container...");
+
+                processBinaryTree.FindEmptyContainerId(parentNode);
+
+                Console.WriteLine($"5->Search is completed.");
+
+                Console.Read();
             }
-
-            int.TryParse(treeDepth, out int _treeDepth);
-            int _numberOfBalls = ((int)Math.Pow(2, _treeDepth)) - 1;
-
-            Console.WriteLine("2->Application is creating a binary tree...");
-
-            var processBinaryTree = serviceProvider.GetService<IProcessBinaryTree>();
-            var parentNode = processBinaryTree.BuildTree(_treeDepth);
-
-            Console.WriteLine("3->Application passing balls...");
-            var result = processBinaryTree.RunBalls(_numberOfBalls, parentNode);
-
-            Console.WriteLine("4->Searching for empty container...");
-
-            processBinaryTree.FindEmptyContainerId(parentNode);
-
-            Console.WriteLine($"5->Search is completed.");
-
-            Console.Read();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void GetUseInput()
