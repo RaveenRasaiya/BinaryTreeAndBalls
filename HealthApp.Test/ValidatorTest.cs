@@ -37,6 +37,16 @@ namespace HealthApp.Test
             var result = _validator.IsValid(depth, predicatedIndex);
             result.Should().NotBeNull();
             result.IsSuccess.Should().BeTrue();
+            result.PredicatedContainerIndex.Should().Be(3);
+            result.Depth.Should().Be(2);
+        }
+
+        [Theory]
+        [InlineData("2", "15")]
+        public void Validate_InvalidPredicatedIndex(string depth, string predicatedIndex)
+        {
+            var result = _validator.IsValid(depth, predicatedIndex);
+            result.Should().BeNull();
         }
     }
 }
