@@ -45,7 +45,7 @@ namespace HealthTech.App
                 Console.WriteLine($"4(a)->Empty Container Index :{rootNode.Index}");
                 if (prediatedContainerIndex == rootNode.Index)
                 {
-                    Console.WriteLine($"Predicated container is match{prediatedContainerIndex}");
+                    Console.WriteLine($"4(b)->Predicated container index is match :{prediatedContainerIndex}");
                 }
                 return;
             }
