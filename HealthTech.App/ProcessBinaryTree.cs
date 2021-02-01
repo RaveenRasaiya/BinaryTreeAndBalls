@@ -27,13 +27,13 @@ namespace HealthTech.App
                     ballAtTreeNode = ToggleTreeGate(ballAtTreeNode);
                 } while (ballAtTreeNode.LeftChildNode != null && ballAtTreeNode.RightChildNode != null);
 
-                ballAtTreeNode.CountOfBalls += 1;                
+                ballAtTreeNode.CountOfBalls += 1;
             }
             return true;
         }
 
 
-        public void FindEmptyContainerId(TreeNode rootNode)
+        public void FindEmptyContainerId(TreeNode rootNode, int prediatedContainerIndex)
         {
             if (rootNode == null)
             {
@@ -43,9 +43,14 @@ namespace HealthTech.App
             if (rootNode.CountOfBalls == 0 && rootNode.RightChildNode == null && rootNode.LeftChildNode == null)
             {
                 Console.WriteLine($"4(a)->Empty Container Index :{rootNode.Index}");
+                if (prediatedContainerIndex == rootNode.Index)
+                {
+                    Console.WriteLine($"4(b)->Predicated container index is match :{prediatedContainerIndex}");
+                }
+                return;
             }
-            FindEmptyContainerId(rootNode.LeftChildNode);
-            FindEmptyContainerId(rootNode.RightChildNode);
+            FindEmptyContainerId(rootNode.LeftChildNode, prediatedContainerIndex);
+            FindEmptyContainerId(rootNode.RightChildNode, prediatedContainerIndex);
         }
 
         #region " | PRIVATE METHODS |"
@@ -79,9 +84,9 @@ namespace HealthTech.App
 
             ++rootIndex;
             Traverse(treeNode.LeftChildNode, rootIndex, treeDepth);
-         
+
             Traverse(treeNode.RightChildNode, rootIndex, treeDepth);
-           
+
         }
         #endregion
     }

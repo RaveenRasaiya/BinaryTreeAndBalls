@@ -14,27 +14,39 @@ namespace HealthApp.Test
         }
 
         [Theory]
-        [InlineData("")]
-        public void Validate_ValidateDepth_Empty(string depth)
+        [InlineData("", "")]
+
+        public void Validate_ValidateDepth_Empty(string depth, string predicatedIndex)
         {
-            var result = _validator.IsValid(depth);
-            result.Should().BeFalse();
+            var result = _validator.IsValid(depth, predicatedIndex);
+            result.Should().BeNull();
         }
         [Theory]
-        [InlineData("-1")]
-        public void Validate_ValidateDepth_Negavtive(string depth)
+        [InlineData("-1", "-1")]
+        public void Validate_ValidateDepth_Negavtive(string depth, string predicatedIndex)
         {
-            var result = _validator.IsValid(depth);
-            result.Should().BeFalse();
+            var result = _validator.IsValid(depth, predicatedIndex);
+            result.Should().BeNull();
         }
 
 
         [Theory]
-        [InlineData("2")]
-        public void Validate_ValidateDepth_Positive(string depth)
+        [InlineData("2", "3")]
+        public void Validate_ValidateDepth_Positive(string depth, string predicatedIndex)
         {
-            var result = _validator.IsValid(depth);
-            result.Should().BeTrue();
+            var result = _validator.IsValid(depth, predicatedIndex);
+            result.Should().NotBeNull();
+            result.IsSuccess.Should().BeTrue();
+            result.PredicatedContainerIndex.Should().Be(3);
+            result.Depth.Should().Be(2);
+        }
+
+        [Theory]
+        [InlineData("2", "15")]
+        public void Validate_InvalidPredicatedIndex(string depth, string predicatedIndex)
+        {
+            var result = _validator.IsValid(depth, predicatedIndex);
+            result.Should().BeNull();
         }
     }
 }
